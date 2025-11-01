@@ -332,7 +332,6 @@ else:
             mlines.Line2D([], [], color=product_colors[pid], marker='o', linestyle='None', markersize=8, label=product_codes[pid])
             for pid in sorted(plotted_products)
         ]
-        ax.legend(handles=product_handles, title="Products", loc="lower left")
 
         product_legend = ax.legend(handles=product_handles, title="Products", loc="lower left")
         ax.add_artist(product_legend)
@@ -363,6 +362,7 @@ else:
             file_name=f"district_products_map_{dpi}dpi.png",
             mime="image/png"
         )
+
 
 
 
