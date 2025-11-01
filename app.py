@@ -295,7 +295,8 @@ else:
             color = group_colors.get(group_name, "#ffffff")
             subset = gdf[gdf[district_column].isin(districts)]
             subset.plot(ax=ax, edgecolor='gray', facecolor=color, linewidth=0.8, zorder=1)
-    
+
+        plotted_products = set()
         # Loop over districts
         for idx, row in gdf.iterrows():
             district = row[district_column]
@@ -310,7 +311,7 @@ else:
                     existing_points.append(point)
                     color = product_colors.get(pid, "black")
                     ax.plot(point.x, point.y, 'o', color=color, markersize=7)
-    
+                    plotted_products.add(pid)  # <- record which products actually appear
                 # Bold label
                 label_text = district_acronyms.get(district, district)
                 ax.text(centroid.x + 0.06, centroid.y + 0.06,
@@ -326,11 +327,13 @@ else:
         product_colors = {int(k): v for k, v in product_colors.items()}
         
         # Now build product legend safely
+        # Only include products that actually appear on the map
         product_handles = [
-            mlines.Line2D([], [], color=color, marker='o', linestyle='None', markersize=8,
-                          label=product_codes.get(code, f"Product {code}"))
-            for code, color in product_colors.items()
+            mlines.Line2D([], [], color=product_colors[pid], marker='o', linestyle='None', markersize=8, label=product_codes[pid])
+            for pid in sorted(plotted_products)
         ]
+        ax.legend(handles=product_handles, title="Products", loc="lower left")
+
         product_legend = ax.legend(handles=product_handles, title="Products", loc="lower left")
         ax.add_artist(product_legend)
 
@@ -360,6 +363,7 @@ else:
             file_name=f"district_products_map_{dpi}dpi.png",
             mime="image/png"
         )
+
 
 
 
