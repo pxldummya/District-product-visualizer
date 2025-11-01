@@ -9,6 +9,7 @@ import os
 import random
 from shapely.geometry import Point
 import json
+import io
 
 st.set_page_config(layout="wide")
 st.title("District Product Map")
@@ -339,8 +340,22 @@ else:
         ]
         ax.legend(handles=district_handles, title="District Groups",
                   loc='lower center', bbox_to_anchor=(0.5, -0.05), ncol=3, frameon=False)
-    
+
+        # Slider to choose DPI
+        dpi = st.slider("Select download resolution (DPI)", min_value=50, max_value=600, value=150, step=10)
+
         plt.axis('off')
-        st.pyplot(fig)
+        st.pyplot(fig, dpi = dpi)
 
 
+        # Download button
+        buf = io.BytesIO()
+        fig.savefig(buf, format="png", dpi=dpi)
+        buf.seek(0)
+        
+        st.download_button(
+            label="Download Plot as PNG",
+            data=buf,
+            file_name="district_products_map.png",
+            mime="image/png"
+        )
