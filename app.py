@@ -36,7 +36,7 @@ st.markdown(
 )
 
 # PSA for users
-st.info("📌 Uploading a shapefile is optional. The app will use the default shapefile if none is uploaded.\n\n"
+st.info("📌 Uploading a shapefile is not necessary. The app will use the default shapefile.\n\n"
         "➡️ Start by clicking 'Generate Map' to see the current layout first 🙂")
 
 def random_point_in_polygon_no_overlap(polygon, existing_points, min_dist=0.01, max_attempts=100):
@@ -388,6 +388,7 @@ else:
             file_name=f"district_products_map_{dpi}dpi.png",
             mime="image/png"
         )
+
 
 
 
