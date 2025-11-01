@@ -274,7 +274,7 @@ if shp_file:
     gdf = gpd.read_file("/tmp/shapefile/gadm41_ZWE_2.shp")
 else:
 # Use local default shapefile
-    shp_file_path = "C:/Users/Simba/Desktop/shapefile.zip"  # make sure this is in the same folder as app.py
+    shp_file_path = "shapefile.zip"  # make sure this is in the same folder as app.py
     with zipfile.ZipFile(shp_file_path, 'r') as zip_ref:
         zip_ref.extractall("/tmp/shapefile")
     gdf = gpd.read_file("/tmp/shapefile/gadm41_ZWE_2.shp")
@@ -342,4 +342,5 @@ else:
     
         plt.axis('off')
         st.pyplot(fig)
+
 
