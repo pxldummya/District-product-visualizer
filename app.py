@@ -11,6 +11,24 @@ from shapely.geometry import Point
 import json
 import io
 
+st.markdown(
+    """
+    <style>
+    [data-testid="stAppViewContainer"] {
+        background: linear-gradient(to bottom, #000000, #0b1e3f);
+        color: #f0f0f0;
+    }
+
+    [data-testid="stSidebar"] {
+        background-color: rgba(15, 15, 30, 0.9);
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+
+
 st.set_page_config(layout="wide")
 st.title("District Product Map")
 # PSA for users
@@ -366,6 +384,7 @@ else:
             file_name=f"district_products_map_{dpi}dpi.png",
             mime="image/png"
         )
+
 
 
 
