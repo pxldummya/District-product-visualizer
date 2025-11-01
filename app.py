@@ -14,7 +14,7 @@ import io
 st.set_page_config(layout="wide")
 st.title("District Product Map")
 # PSA for users
-st.info("📌 Uploading a shapefile is optional. The app will use the default shapefile if none is uploaded.")
+st.info("📌 Uploading a shapefile is not necessary. The app will use the default shapefile loaded.")
 
 
 def random_point_in_polygon_no_overlap(polygon, existing_points, min_dist=0.01, max_attempts=100):
@@ -360,6 +360,7 @@ else:
             file_name=f"district_products_map_{dpi}dpi.png",
             mime="image/png"
         )
+
 
 
 
