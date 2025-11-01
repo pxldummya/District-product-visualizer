@@ -342,8 +342,7 @@ else:
         ax.legend(handles=district_handles, title="District Groups",
                   loc='lower center', bbox_to_anchor=(0.5, -0.05), ncol=3, frameon=False)
 
-        # Slider to choose DPI
-        dpi = st.slider("Select download resolution (DPI)", min_value=50, max_value=600, value=150, step=10)
+        
 
         plt.axis('off')
         st.pyplot(fig, dpi = dpi)
@@ -360,5 +359,6 @@ else:
             file_name=f"district_products_map_{dpi}dpi.png",
             mime="image/png"
         )
+
 
 
