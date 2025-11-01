@@ -350,14 +350,15 @@ else:
 
 
         # Download button
+       # Download button uses same DPI
         buf = io.BytesIO()
         fig.savefig(buf, format="png", dpi=dpi)
         buf.seek(0)
-        
         st.download_button(
             label="Download Plot as PNG",
             data=buf,
             file_name=f"district_products_map_{dpi}dpi.png",
             mime="image/png"
         )
+
 
