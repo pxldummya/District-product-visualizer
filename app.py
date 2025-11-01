@@ -328,23 +328,23 @@ else:
         
        # Only include products that actually appear on the map
         if plotted_products:
-        product_handles = [
-        mlines.Line2D([], [], color=product_colors[pid], marker='o', linestyle='None', markersize=8, label=product_codes[pid])
-        for pid in sorted(plotted_products)
-        ]
-        
-        
-        product_legend = ax.legend(handles=product_handles, title="Products", loc="lower left")
-        ax.add_artist(product_legend)
-        
-        
-        # District legend remains the same
+                product_handles = [
+                mlines.Line2D([], [], color=product_colors[pid], marker='o', linestyle='None', markersize=8, label=product_codes[pid])
+                for pid in sorted(plotted_products)
+                ]
+                
+                
+                product_legend = ax.legend(handles=product_handles, title="Products", loc="lower left")
+                ax.add_artist(product_legend)
+                
+                
+                # District legend remains the same
         district_handles = [
-        mlines.Line2D([], [], color=color, marker='s', linestyle='None', markersize=12, label=group_name)
-        for group_name, color in group_colors.items()
-        ]
+                mlines.Line2D([], [], color=color, marker='s', linestyle='None', markersize=12, label=group_name)
+                for group_name, color in group_colors.items()
+                ]
         ax.legend(handles=district_handles, title="District Groups",
-        loc='lower center', bbox_to_anchor=(0.5, -0.05), ncol=3, frameon=False)
+                loc='lower center', bbox_to_anchor=(0.5, -0.05), ncol=3, frameon=False)
 
         
 
@@ -363,6 +363,7 @@ else:
             file_name=f"district_products_map_{dpi}dpi.png",
             mime="image/png"
         )
+
 
 
 
