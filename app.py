@@ -24,6 +24,8 @@ st.markdown(
     }
     </style>
     """,
+     "<h1 style='text-align: center; color: white;'>District Product Map</h1>",
+
     unsafe_allow_html=True
 )
 
@@ -384,6 +386,7 @@ else:
             file_name=f"district_products_map_{dpi}dpi.png",
             mime="image/png"
         )
+
 
 
 
