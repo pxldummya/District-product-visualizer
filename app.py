@@ -284,8 +284,9 @@ else:
     # -------------------------------
     # 4. Generate map button
     # -------------------------------
+    dpi = st.slider("Select map resolution (DPI)", min_value=50, max_value=300, value=150)
     if st.button("Generate Map"):
-        fig, ax = plt.subplots(figsize=(14,12))
+        fig, ax = plt.subplots(figsize=(14,12), dpi = dpi)
     
         # Plot districts and shading
         gdf.plot(ax=ax, edgecolor='gray', facecolor='white', linewidth=0.8)
@@ -356,6 +357,7 @@ else:
         st.download_button(
             label="Download Plot as PNG",
             data=buf,
-            file_name="district_products_map.png",
+            file_name=f"district_products_map_{dpi}dpi.png",
             mime="image/png"
         )
+
