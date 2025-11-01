@@ -24,15 +24,17 @@ st.markdown(
     }
     </style>
     """,
-     "<h1 style='text-align: center; color: white;'>District Product Map</h1>",
-
     unsafe_allow_html=True
 )
 
 
 
 st.set_page_config(layout="wide")
-st.title("District Product Map")
+st.markdown(
+    "<h1 style='text-align: center; color: white;'>District Product Map</h1>",
+    unsafe_allow_html=True
+)
+
 # PSA for users
 st.info("📌 Uploading a shapefile is optional. The app will use the default shapefile if none is uploaded.\n\n"
         "➡️ Start by clicking 'Generate Map' to see the current layout first 🙂")
@@ -386,6 +388,7 @@ else:
             file_name=f"district_products_map_{dpi}dpi.png",
             mime="image/png"
         )
+
 
 
 
