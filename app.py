@@ -297,6 +297,7 @@ else:
             subset.plot(ax=ax, edgecolor='gray', facecolor=color, linewidth=0.8, zorder=1)
 
         plotted_products = set()
+        plotted_colors = {}
         # Loop over districts
         for idx, row in gdf.iterrows():
             district = row[district_column]
@@ -305,7 +306,7 @@ else:
             product_ids = district_products.get(district, [])
             existing_points = []
                 
-            plotted_colors = {}
+            
             if product_ids:  # districts with products
                 for pid in product_ids:
                     point = random_point_in_polygon_no_overlap(polygon, existing_points, min_dist=0.05, max_attempts=30)
@@ -365,6 +366,7 @@ else:
             file_name=f"district_products_map_{dpi}dpi.png",
             mime="image/png"
         )
+
 
 
 
