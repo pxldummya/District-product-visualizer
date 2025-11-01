@@ -304,7 +304,8 @@ else:
             centroid = polygon.centroid
             product_ids = district_products.get(district, [])
             existing_points = []
-    
+                
+            plotted_colors = {}
             if product_ids:  # districts with products
                 for pid in product_ids:
                     point = random_point_in_polygon_no_overlap(polygon, existing_points, min_dist=0.05, max_attempts=30)
@@ -312,6 +313,7 @@ else:
                     color = product_colors.get(pid, "black")
                     ax.plot(point.x, point.y, 'o', color=color, markersize=7)
                     plotted_products.add(pid)  # <- record which products actually appear
+                    plotted_colors[pid] = color
                 # Bold label
                 label_text = district_acronyms.get(district, district)
                 ax.text(centroid.x + 0.06, centroid.y + 0.06,
@@ -329,7 +331,7 @@ else:
        # Only include products that actually appear on the map
         if plotted_products:
                 product_handles = [
-                mlines.Line2D([], [], color=product_colors[pid], marker='o', linestyle='None', markersize=8, label=product_codes[pid])
+                mlines.Line2D([], [], color=plotted_colors[pid], marker='o', linestyle='None', markersize=8, label=product_codes[pid])
                 for pid in sorted(plotted_products)
                 ]
                 
@@ -363,6 +365,7 @@ else:
             file_name=f"district_products_map_{dpi}dpi.png",
             mime="image/png"
         )
+
 
 
 
